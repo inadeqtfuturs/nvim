@@ -33,7 +33,6 @@ return require("packer").startup(function(use)
 
 		-- lsp
 		"lsp",
-
 		"barbar",
 		"indent_blankline",
 		"autopairs",

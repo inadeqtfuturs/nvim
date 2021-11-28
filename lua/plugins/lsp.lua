@@ -21,9 +21,35 @@ function module.init(use)
 				buf_set_keymap("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 				buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 				buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+				buf_set_keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 				buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 				buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+				buf_set_keymap("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 				buf_set_keymap("n", "gl", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+
+				if WKOpts then
+					local wk = require("which-key")
+
+					local mappings = {
+						a = { "Code action" },
+						D = { "Go to declaration" },
+						d = { "Go to definition" },
+						I = { "Show implementation" },
+						K = { "Show hover" },
+						r = { "Rename" },
+						s = { "Show signature help" },
+						l = { "Show line diagnostics" },
+					}
+
+					wk.register(mappings, {
+						mode = "n",
+						prefix = "g",
+						buffer = nil,
+						silent = true,
+						noremap = true,
+						nowait = true,
+					})
+				end
 
 				vim.cmd([[
           augroup Format

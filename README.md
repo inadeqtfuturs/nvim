@@ -5,7 +5,7 @@ nvim configuration
 ## todo
 
 - [x] initialize config
+- [x] refactor which-key, moving config to plugins
 - [ ] configure lualine 
-- [ ] refactor which-key, moving config to plugins
 - [ ] js/react snippets
 - [ ] restructure lsp configuration

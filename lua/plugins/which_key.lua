@@ -69,7 +69,7 @@ function module.init(use)
 			}
 
 			local vmappings = {
-				["/"] = { "<ESC><CMD>lua ___comment_gc(vim.fn.visualmode())<CR>", "Comment" },
+				["/"] = { "<ESC><CMD>lua require('Comment.api').gc(vim.fn.visualmode())<CR>", "Comment" },
 			}
 
 			require("which-key").register(mappings, WKOpts)

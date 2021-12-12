@@ -27,8 +27,6 @@ function module.init(use)
         ]])
 			end
 
-        local thing
-
 			server:setup({
 				capabilities = capabilities,
 				on_attach = on_attach,

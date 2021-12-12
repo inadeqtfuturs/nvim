@@ -59,6 +59,13 @@ function module.init(use)
         ]])
 			end
 
+			-- signs
+			local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+			for type, icon in pairs(signs) do
+				local hl = "DiagnosticSign" .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = "Info", numhl = "Info" })
+			end
+
 			-- ui
 			vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 				-- inline settings
@@ -67,12 +74,8 @@ function module.init(use)
 					virtual_text = true,
 					underline = true,
 					signs = true,
-				},
-				-- signs
-				vim.fn.sign_define("LspDiagnosticsSignError", { text = "" }),
-				vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "" }),
-				vim.fn.sign_define("LspDiagnosticsSignHint", { text = "" }),
-				vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "" })
+					serverity_sort = true,
+				}
 			)
 
 			local function get_config()

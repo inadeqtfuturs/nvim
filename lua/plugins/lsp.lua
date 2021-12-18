@@ -103,7 +103,7 @@ function module.init(use)
 			)
 
 			-- null-ls
-			require("null-ls").config({
+			require("null-ls").setup({
 				sources = {
 					-- js
 					require("null-ls").builtins.formatting.eslint_d,
@@ -112,9 +112,6 @@ function module.init(use)
 					-- lua
 					require("null-ls").builtins.formatting.stylua,
 				},
-			})
-
-			require("lspconfig")["null-ls"].setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 			})

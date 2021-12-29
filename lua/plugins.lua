@@ -11,7 +11,9 @@ return require("packer").startup(function(use)
 
 	local configs = {
 		-- theme
-		"iceberg",
+		-- "iceberg",
+		-- "aquarium",
+		"substrata",
 
 		-- dashboard
 		"dashboard",
@@ -50,6 +52,9 @@ return require("packer").startup(function(use)
 
 		-- lualine
 		"lualine",
+
+		-- lush
+		"lush",
 	}
 
 	for i, name in ipairs(configs) do

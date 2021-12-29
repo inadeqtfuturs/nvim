@@ -38,6 +38,8 @@ opt.hidden = true
 -- enable mouse interaction
 opt.mouse = "a"
 
+opt.pumheight = 10
+
 -- highlight text after yank
 vim.cmd([[
   augroup highlight_yank

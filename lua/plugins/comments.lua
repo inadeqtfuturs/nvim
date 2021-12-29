@@ -3,6 +3,7 @@ local module = {}
 function module.init(use)
 	use({
 		"numToStr/Comment.nvim",
+		commit = "eb0a84a2ea42858a2bb3cdf5fabe54e7c700555d",
 		config = function()
 			require("Comment").setup()
 

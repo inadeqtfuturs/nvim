@@ -2,7 +2,7 @@ local module = {}
 
 function module.init(use)
 	use({
-		"arzg/vim-substrata",
+		"kvrohit/substrata.nvim",
 		config = function()
 			vim.cmd([[
         colorscheme substrata

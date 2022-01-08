@@ -15,6 +15,9 @@ function module.init(use)
 				-- define an alias
 				vim.cmd("command -buffer Formatting lua vim.lsp.buf.formatting()")
 				vim.cmd("command -buffer FormattingSync lua vim.lsp.buf.formatting_sync()")
+				vim.diagnostic.config({
+					virtual_text = false,
+				})
 
 				-- format on save -- USE SEQ_SYNC
 				-- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()")

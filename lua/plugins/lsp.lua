@@ -57,6 +57,35 @@ function module.init(use)
             au BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
           augroup END
         ]])
+
+				vim.diagnostic.open_float = (function(orig)
+					return function(bufnr, opts)
+						local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
+						local opts = opts or {}
+						-- A more robust solution would check the "scope" value in `opts` to
+						-- determine where to get diagnostics from, but if you're only using
+						-- this for your own purposes you can make it as simple as you like
+						local diagnostics = vim.diagnostic.get(opts.bufnr or 0, { lnum = lnum })
+						local max_severity = vim.diagnostic.severity.HINT
+						for _, d in ipairs(diagnostics) do
+							-- Equality is "less than" based on how the severities are encoded
+							if d.severity < max_severity then
+								max_severity = d.severity
+							end
+						end
+						orig(bufnr, opts)
+					end
+				end)(vim.diagnostic.open_float)
+
+				vim.diagnostic.config({
+					virtual_text = false,
+				})
+
+				-- Show line diagnostics in floating popup on hover, except insert mode (CursorHoldI)
+				vim.o.updatetime = 250
+				vim.cmd(
+					[[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", border="rounded"})]]
+				)
 			end
 
 			-- signs
@@ -71,7 +100,7 @@ function module.init(use)
 				-- inline settings
 				vim.lsp.diagnostic.on_publish_diagnostics,
 				{
-					virtual_text = true,
+					virtual_text = false,
 					underline = true,
 					signs = true,
 					serverity_sort = true,

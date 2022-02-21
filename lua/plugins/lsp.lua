@@ -2,7 +2,7 @@ local module = {}
 
 function module.init(use)
 	use({
-		"neovim/nvim-lspconfig",
+      "neovim/nvim-lspconfig",
 		requires = {
 			{ "williamboman/nvim-lsp-installer" },
 			{ "jose-elias-alvarez/null-ls.nvim" },
@@ -140,6 +140,13 @@ function module.init(use)
 
 					-- lua
 					require("null-ls").builtins.formatting.stylua,
+
+					-- php
+					require("null-ls").builtins.formatting.phpcbf,
+
+          -- ruby
+          require("null-ls").builtins.diagnostics.rubocop,
+          require("null-ls").builtins.formatting.rubocop
 				},
 				on_attach = on_attach,
 				capabilities = capabilities,

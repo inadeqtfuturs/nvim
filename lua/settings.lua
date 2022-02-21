@@ -22,7 +22,7 @@ opt.numberwidth = 4
 opt.signcolumn = "yes"
 
 -- wrap lines at convenient points
-vim.wo.wrap = true
+vim.wo.wrap = false
 vim.wo.linebreak = true
 
 opt.tabstop = 2

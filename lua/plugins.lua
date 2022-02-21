@@ -38,6 +38,7 @@ return require("packer").startup(function(use)
 		"barbar",
 		"indent_blankline",
 		"autopairs",
+		"autotag",
 		"comments",
 		"cool",
 

@@ -19,9 +19,6 @@ function module.init(use)
 					virtual_text = false,
 				})
 
-				-- format on save -- USE SEQ_SYNC
-				-- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()")
-
 				vim.cmd([[
           augroup Format
             au! * <buffer>

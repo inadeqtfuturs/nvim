@@ -35,6 +35,8 @@ return require("packer").startup(function(use)
 
 		-- lsp
 		"lsp",
+
+		-- ide
 		"barbar",
 		"indent_blankline",
 		"autopairs",

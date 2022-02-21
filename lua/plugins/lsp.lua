@@ -2,7 +2,7 @@ local module = {}
 
 function module.init(use)
 	use({
-      "neovim/nvim-lspconfig",
+		"neovim/nvim-lspconfig",
 		requires = {
 			{ "williamboman/nvim-lsp-installer" },
 			{ "jose-elias-alvarez/null-ls.nvim" },
@@ -12,6 +12,10 @@ function module.init(use)
 			local on_attach = function(client, bufnr)
 				local function buf_set_keymap(...)
 					vim.api.nvim_buf_set_keymap(bufnr, ...)
+				end
+
+				if client.name == "tsserver" then
+					client.resolved_capabilities.document_formatting = false
 				end
 
 				-- Mappings.
@@ -137,6 +141,7 @@ function module.init(use)
 					-- js
 					require("null-ls").builtins.formatting.eslint_d,
 					require("null-ls").builtins.diagnostics.eslint_d,
+					require("null-ls").builtins.code_actions.eslint_d,
 
 					-- lua
 					require("null-ls").builtins.formatting.stylua,
@@ -144,9 +149,9 @@ function module.init(use)
 					-- php
 					require("null-ls").builtins.formatting.phpcbf,
 
-          -- ruby
-          require("null-ls").builtins.diagnostics.rubocop,
-          require("null-ls").builtins.formatting.rubocop
+					-- ruby
+					require("null-ls").builtins.diagnostics.rubocop,
+					require("null-ls").builtins.formatting.rubocop,
 				},
 				on_attach = on_attach,
 				capabilities = capabilities,

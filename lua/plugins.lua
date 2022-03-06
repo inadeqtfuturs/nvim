@@ -11,8 +11,6 @@ return require("packer").startup(function(use)
 
 	local configs = {
 		-- theme
-		-- "iceberg",
-		-- "aquarium",
 		"substrata",
 
 		-- dashboard
@@ -43,6 +41,7 @@ return require("packer").startup(function(use)
 		"autotag",
 		"comments",
 		"cool",
+		"lightspeed",
 
 		-- terminal
 		"toggleterm",

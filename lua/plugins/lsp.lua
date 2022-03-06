@@ -5,6 +5,7 @@ function module.init(use)
 		"neovim/nvim-lspconfig",
 		requires = {
 			{ "williamboman/nvim-lsp-installer" },
+			{ "ray-x/lsp_signature.nvim" },
 			{ "jose-elias-alvarez/null-ls.nvim" },
 		},
 		config = function()
@@ -30,6 +31,14 @@ function module.init(use)
 				buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 				buf_set_keymap("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 				buf_set_keymap("n", "gl", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+
+				require("lsp_signature").on_attach({
+					bind = true,
+					hint_enable = false,
+					handler_opts = {
+						border = "single",
+					},
+				})
 
 				if WKOpts then
 					local wk = require("which-key")

@@ -49,6 +49,7 @@ return require("packer").startup(function(use)
 		-- git
 		"gitsigns",
 		"blamer",
+		"octo",
 
 		-- which key
 		"which_key",

@@ -10,23 +10,6 @@ function module.init(use)
 		},
 		config = function()
 			require("octo").setup()
-			--
-			-- if WKOpts then
-			-- 	local wk = require("which-key")
-			--
-			-- 	local mappings = {
-			-- 		O = {
-			-- 			name = "Octo",
-			-- 			c = {
-			-- 				name = { "Comment" },
-			-- 				a = { "<cmd>Octo comment add<cr>", "Add" },
-			-- 				d = { "<cmd>Octo comment delete<cr>", "Delete" },
-			-- 			},
-			-- 		},
-			-- 	}
-			--
-			-- 	wk.register(mappings, WKOpts)
-			-- end
 
 			if WKOpts then
 				local wk = require("which-key")
@@ -34,6 +17,30 @@ function module.init(use)
 				local mappings = {
 					O = {
 						name = "Octo",
+						C = {
+							name = "Code Review",
+							a = {
+								name = "Add Label",
+								d = { "<cmd>Octo label add ready\\ to\\ merge<cr>", "Ready to Merge" },
+								r = { "<cmd>Octo label add revisions\\ requested<cr>", "Revisions Requested" },
+							},
+							r = {
+								name = "Removre Label",
+								d = { "<cmd>Octo label remove ready\\ to\\ merge<cr>", "Ready to Merge" },
+								r = { "<cmd>Octo label remove revisions\\ requested<cr>", "Revisions Requested" },
+								R = { "<cmd>Octo label remove ready\\ for\\ review<cr>", "Ready for Review" },
+							},
+							s = { "<cmd>Octo review start<cr>", "Start Review" },
+							d = { "<cmd>Octo review submit<cr>", "Submit Review" },
+							c = { "<cmd>Octo review resume<cr>", "Continue Review" },
+							t = { "<cmd>Octo review discard<cr>", "Discard Review" },
+							C = { "<cmd>Octo review comments<cr>", "View Pending Comments" },
+						},
+						c = {
+							name = "Comment",
+							a = { "<cmd>Octo comment add<cr>", "Add" },
+							d = { "<cmd>Octo comment delete<cr>", "Delete" },
+						},
 						p = {
 							name = "PR",
 							l = { "<cmd>Octo pr list<cr>", "List" },
@@ -56,13 +63,9 @@ function module.init(use)
 							b = { "<cmd>Octo repo browser<cr>", "Browser" },
 							u = { "<cmd>Octo repo url<cr>", "URL" },
 						},
-						c = {
-							name = "Comment",
-							a = { "<cmd>Octo comment add<cr>", "Add" },
-							d = { "<cmd>Octo comment delete<cr>", "Delete" },
-						},
 						a = { "<cmd>Octo actions<cr>", "Actions" },
 						s = { "<cmd>Octo search<cr>", "Search" },
+						l = { "<cmd>Octo pr list labels=ready\\ for\\ review<cr>", "List 'Ready for Review'" },
 					},
 				}
 

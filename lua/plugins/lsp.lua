@@ -17,6 +17,10 @@ function module.init(use)
 
 				if client.name == "tsserver" then
 					client.resolved_capabilities.document_formatting = false
+
+					if client.config.flags then
+						client.config.flags.allow_incremental_sync = true
+					end
 				end
 
 				-- Mappings.

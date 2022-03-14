@@ -38,6 +38,10 @@ function module.init(use)
 					description = { "  Find Word          " },
 					command = "Telescope live_grep",
 				},
+				e = {
+					description = { "  Code Review        " },
+					command = "Octo pr list labels=ready\\ for\\ review",
+				},
 			}
 			vim.g.dashboard_custom_footer = footer
 		end,

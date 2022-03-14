@@ -17,29 +17,15 @@ function module.init(use)
 				local mappings = {
 					O = {
 						name = "Octo",
-						C = {
-							name = "Code Review",
-							a = {
-								name = "Add Label",
-								d = { "<cmd>Octo label add ready\\ to\\ merge<cr>", "Ready to Merge" },
-								r = { "<cmd>Octo label add revisions\\ requested<cr>", "Revisions Requested" },
-							},
-							r = {
-								name = "Removre Label",
-								d = { "<cmd>Octo label remove ready\\ to\\ merge<cr>", "Ready to Merge" },
-								r = { "<cmd>Octo label remove revisions\\ requested<cr>", "Revisions Requested" },
-								R = { "<cmd>Octo label remove ready\\ for\\ review<cr>", "Ready for Review" },
-							},
-							s = { "<cmd>Octo review start<cr>", "Start Review" },
-							d = { "<cmd>Octo review submit<cr>", "Submit Review" },
-							c = { "<cmd>Octo review resume<cr>", "Continue Review" },
-							t = { "<cmd>Octo review discard<cr>", "Discard Review" },
-							C = { "<cmd>Octo review comments<cr>", "View Pending Comments" },
-						},
 						c = {
 							name = "Comment",
 							a = { "<cmd>Octo comment add<cr>", "Add" },
 							d = { "<cmd>Octo comment delete<cr>", "Delete" },
+						},
+						L = {
+							name = "Label",
+							a = { "<cmd>Octo label add<cr>", "Add" },
+							r = { "<cmd>Octo label remove<cr>", "Remove" },
 						},
 						p = {
 							name = "PR",
@@ -49,7 +35,7 @@ function module.init(use)
 							b = { "<cmd>Octo pr browser<cr>", "Browser" },
 							u = { "<cmd>Octo pr url<cr>", "URL" },
 						},
-						R = {
+						r = {
 							name = "Review",
 							s = { "<cmd>Octo review start<cr>", "Start" },
 							d = { "<cmd>Octo review submit<cr>", "Done - submit" },
@@ -57,7 +43,7 @@ function module.init(use)
 							t = { "<cmd>Octo review discard<cr>", "Trash - discard" },
 							c = { "<cmd>Octo review comments<cr>", "Comments" },
 						},
-						r = {
+						R = {
 							name = "Repo",
 							l = { "<cmd>Octo repo list<cr>", "List" },
 							b = { "<cmd>Octo repo browser<cr>", "Browser" },

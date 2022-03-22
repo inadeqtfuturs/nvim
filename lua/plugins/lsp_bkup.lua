@@ -11,10 +11,6 @@ function module.init(use)
 		config = function()
 			-- on_attach
 			local on_attach = function(client, bufnr)
-				local function buf_set_keymap(...)
-					vim.api.nvim_buf_set_keymap(bufnr, ...)
-				end
-
 				if client.name == "tsserver" then
 					client.resolved_capabilities.document_formatting = false
 
@@ -22,19 +18,6 @@ function module.init(use)
 						client.config.flags.allow_incremental_sync = true
 					end
 				end
-
-				-- Mappings.
-				local opts = { noremap = true, silent = true }
-
-				-- See `:help vim.lsp.*` for documentation on any of the below functions
-				buf_set_keymap("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-				buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-				buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-				buf_set_keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-				buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-				buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-				buf_set_keymap("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-				buf_set_keymap("n", "gl", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
 
 				require("lsp_signature").on_attach({
 					bind = true,
@@ -48,14 +31,14 @@ function module.init(use)
 					local wk = require("which-key")
 
 					local mappings = {
-						a = { "Code action" },
-						D = { "Go to declaration" },
-						d = { "Go to definition" },
-						I = { "Show implementation" },
-						K = { "Show hover" },
-						r = { "Rename" },
-						s = { "Show signature help" },
-						l = { "Show line diagnostics" },
+						a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
+						D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
+						d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
+						I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Show implementation" },
+						K = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover" },
+						r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+						s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Show signature help" },
+						l = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", "Show line diagnostics" },
 					}
 
 					wk.register(mappings, {

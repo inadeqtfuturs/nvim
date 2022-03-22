@@ -16,13 +16,16 @@ opt.undodir = vim.fn.stdpath("config") .. "/undodir"
 vim.o.undolevels = 1000
 vim.o.undoreload = 10000
 
+-- automatically read changes in files from outside of vim (git pull, etc.)
+vim.o.autoread = true
+
 -- show line numbers
 vim.wo.number = true
 opt.numberwidth = 4
 opt.signcolumn = "yes"
 
 -- wrap lines at convenient points
-vim.wo.wrap = false
+vim.wo.wrap = true
 vim.wo.linebreak = true
 
 opt.tabstop = 2

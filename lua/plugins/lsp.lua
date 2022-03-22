@@ -101,7 +101,7 @@ function module.init(use)
 				-- Show line diagnostics in floating popup on hover, except insert mode (CursorHoldI)
 				vim.o.updatetime = 250
 				vim.cmd(
-					[[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", border="rounded"})]]
+					[[autocmd CursorHold * lua vim.diagnostic.open_float(0, {focus=false, scope="cursor", border="rounded"})]]
 				)
 			end
 

@@ -6,6 +6,7 @@ function module.init(use)
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("nvim-tree").setup({
+				open_on_setup = false,
 				view = {
 					side = "right",
 					width = 40,

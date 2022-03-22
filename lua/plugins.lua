@@ -29,7 +29,7 @@ return require("packer").startup(function(use)
 		"cmp",
 
 		-- formatting // linting
-		"null_ls_config",
+		-- "null_ls_config",
 
 		-- lsp
 		"lsp",

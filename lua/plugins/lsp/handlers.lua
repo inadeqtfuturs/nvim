@@ -28,6 +28,10 @@ function module.setup()
 		}
 	)
 
+	vim.diagnostic.config({
+		virtual_text = false,
+	})
+
 	vim.cmd([[
     augroup Format
       au! * <buffer>

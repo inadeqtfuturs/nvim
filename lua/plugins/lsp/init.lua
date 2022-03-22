@@ -1,23 +1,5 @@
 local module = {}
 
-
-local function on_attach()
-	require("plugins.lsp.keymaps").setup()
-	require("plugins.lsp.highlighter").setup()
-end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-if package.loaded["cmp_nvim_lsp"] then
-	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-end
-
-local opts = {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
-
-require("plugins.lsp.handlers").setup()
-
 -- convert to
 function module.init(use)
 	use({
@@ -26,21 +8,38 @@ function module.init(use)
 			{ "williamboman/nvim-lsp-installer" },
 			{ "ray-x/lsp_signature.nvim" },
 			{ "jose-elias-alvarez/null-ls.nvim" },
+			{ "nvim-lua/plenary.nvim" },
 		},
 		config = function()
-      local servers = {
-        jsonls = {},
-        sumneko_lua = {
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { "vim" },
-              },
-            },
-          },
-        },
-        tsserver = {},
-      }
+			local servers = {
+				jsonls = {},
+				sumneko_lua = {
+					settings = {
+						Lua = {
+							diagnostics = {
+								globals = { "vim" },
+							},
+						},
+					},
+				},
+				tsserver = {},
+			}
+
+			local function on_attach()
+				require("plugins.lsp.keymaps").setup()
+				require("plugins.lsp.highlighter").setup()
+				require("plugins.lsp.handlers").setup()
+			end
+
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			if package.loaded["cmp_nvim_lsp"] then
+				capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+			end
+
+			local opts = {
+				on_attach = on_attach,
+				capabilities = capabilities,
+			}
 
 			-- servers
 			require("plugins.lsp.installer").setup(servers, opts)

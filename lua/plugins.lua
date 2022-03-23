@@ -13,6 +13,9 @@ return require("packer").startup(function(use)
 		-- theme
 		"substrata",
 
+		-- which key
+		"which_key",
+
 		-- dashboard
 		"dashboard",
 
@@ -27,9 +30,6 @@ return require("packer").startup(function(use)
 
 		-- autocomplete
 		"cmp",
-
-		-- formatting // linting
-		-- "null_ls_config",
 
 		-- lsp
 		"lsp",
@@ -50,9 +50,6 @@ return require("packer").startup(function(use)
 		"gitsigns",
 		"blamer",
 		"octo",
-
-		-- which key
-		"which_key",
 
 		-- lualine
 		"lualine",

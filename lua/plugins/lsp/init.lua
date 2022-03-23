@@ -25,10 +25,10 @@ function module.init(use)
 				tsserver = {},
 			}
 
-			local function on_attach()
+			local function on_attach(client)
 				require("plugins.lsp.keymaps").setup()
 				require("plugins.lsp.highlighter").setup()
-				require("plugins.lsp.handlers").setup()
+				require("plugins.lsp.handlers").setup(client)
 			end
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()

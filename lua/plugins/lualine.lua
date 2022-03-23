@@ -19,7 +19,14 @@ function module.init(use)
 							"branch",
 							icon = "",
 						},
-						{ "diff" },
+						{
+							"diff",
+							diff_color = {
+								added = "diffAdded",
+								modified = "diffChanged",
+								removed = "diffRemoved",
+							},
+						},
 					},
 					lualine_x = {
 						{ "diagnostics" },

@@ -1,6 +1,6 @@
 local module = {}
 
-function module.setup()
+function module.setup(client)
 	-- signature
 	require("lsp_signature").on_attach({
 		bind = true,
@@ -17,16 +17,20 @@ function module.setup()
 		vim.fn.sign_define(hl, { text = icon, texthl = "Info", numhl = "Info" })
 	end
 
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-		-- inline settings
-		vim.lsp.diagnostic.on_publish_diagnostics,
-		{
-			virtual_text = false,
-			underline = true,
-			signs = true,
-			serverity_sort = true,
-		}
-	)
+	if client.name ~= "tsserver" then
+		vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+			-- inline settings
+			vim.lsp.diagnostic.on_publish_diagnostics,
+			{
+				virtual_text = false,
+				underline = true,
+				signs = true,
+				serverity_sort = true,
+			}
+		)
+	else
+		vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+	end
 
 	vim.diagnostic.config({
 		virtual_text = false,

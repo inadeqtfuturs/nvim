@@ -42,6 +42,8 @@ return require("packer").startup(function(use)
 		"comments",
 		"cool",
 		"lightspeed",
+		"neogen",
+		"orgmode",
 
 		-- terminal
 		"toggleterm",
@@ -56,6 +58,8 @@ return require("packer").startup(function(use)
 
 		-- lush
 		"lush",
+
+		"neorg",
 	}
 
 	for i, name in ipairs(configs) do

@@ -39,7 +39,7 @@ function module.init(use)
 
 				wk.register(mappings, {
 					mode = "n",
-					prefix = "h",
+					prefix = "<leader>h",
 					buffer = nil,
 					silent = true,
 					noremap = true,
@@ -48,7 +48,7 @@ function module.init(use)
 
 				wk.register(vmappings, {
 					mode = "v",
-					prefix = "h",
+					prefix = "<leader>h",
 					buffer = nil,
 					silent = true,
 					noremap = true,

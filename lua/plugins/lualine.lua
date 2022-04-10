@@ -29,7 +29,10 @@ function module.init(use)
 						},
 					},
 					lualine_x = {
-						{ "diagnostics" },
+						{
+							"diagnostics",
+							colored = false,
+						},
 						{
 							function(msg)
 								msg = msg or "inactive"

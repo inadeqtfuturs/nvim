@@ -10,12 +10,21 @@ function module.setup(servers, options)
 			server:on_ready(function()
 				local opts = vim.tbl_deep_extend("force", options, servers[server.name] or {})
 
-				server:setup(opts)
+				if server.name == "rust_analyzer" then
+					require("rust-tools").setup({
+						server = vim.tbl_deep_extend("force", server:get_default_options(), opts),
+					})
+					server:attach_buffers()
+				else
+					server:setup(opts)
+				end
 			end)
 
 			if not server:is_installed() then
 				server:install()
 			end
+		else
+			print("error in:", server.name)
 		end
 	end
 end

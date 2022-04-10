@@ -30,6 +30,8 @@ function module.setup(client)
 		)
 	else
 		vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+		client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_range_formatting = false
 	end
 
 	vim.diagnostic.config({

@@ -9,7 +9,8 @@ function module.init(use)
 		run = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = "maintained",
+				ensure_installed = "all",
+				ignore_install = { "phpdoc" },
 				context_commentstring = {
 					enable = true,
 				},
@@ -44,8 +45,25 @@ function module.init(use)
 				},
 			})
 
+			-- additional parser configs
 			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
 			parser_config.markdown.filetype_to_parsername = "octo"
+
+			parser_config.norg_meta = {
+				install_info = {
+					url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
+					files = { "src/parser.c" },
+					branch = "main",
+				},
+			}
+			parser_config.norg_table = {
+				install_info = {
+					url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
+					files = { "src/parser.c" },
+					branch = "main",
+				},
+			}
 		end,
 	})
 end

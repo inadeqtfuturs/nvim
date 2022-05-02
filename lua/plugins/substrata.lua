@@ -2,7 +2,7 @@ local module = {}
 
 function module.init(use)
 	use({
-		"kvrohit/substrata.nvim",
+		"inadeqtfuturs/substrata.nvim",
 		config = function()
 			vim.cmd([[
         colorscheme substrata

@@ -10,19 +10,23 @@ function module.init(use)
 			{ "jose-elias-alvarez/null-ls.nvim" },
 			{ "nvim-lua/plenary.nvim" },
 			{ "simrat39/rust-tools.nvim" },
+			{ "RRethy/vim-illuminate" },
 		},
 
 		config = function()
 			local servers = {
-				-- eslint = {
-				-- 	settings = {
-				-- 		codeActions = {
-				-- 			enable = false,
-				-- 		},
-				-- 		format = true,
-				-- 	},
-				-- },
-				cssls = {},
+				cssls = {
+					filetypes = {
+						"css",
+						"scss",
+						"less",
+						"js",
+						"jsx",
+						"javascript",
+						"javascriptreact",
+					},
+				},
+				intelephense = {},
 				jsonls = {},
 				rust_analyzer = {
 					settings = {
@@ -45,17 +49,24 @@ function module.init(use)
 					},
 				},
 				tsserver = {},
+				yamlls = {},
 			}
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			if package.loaded["cmp_nvim_lsp"] then
 				capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 			end
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-			local function on_attach(client)
-				require("plugins.lsp.keymaps").setup()
-				require("plugins.lsp.highlighter").setup()
-				require("plugins.lsp.handlers").setup(client)
+			local function on_attach(client, bufnr)
+				require("plugins.lsp.keymaps").setup(bufnr)
+				require("plugins.lsp.highlighter").setup(client)
+				require("plugins.lsp.handlers").setup()
+
+				if client.name == "tsserver" then
+					client.resolved_capabilities.document_formatting = false
+					vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+				end
 			end
 
 			local opts = {
@@ -70,9 +81,8 @@ function module.init(use)
 			require("null-ls").setup({
 				sources = {
 					-- js
-					-- require("null-ls").builtins.formatting.eslint_d,
-					require("null-ls").builtins.formatting.prettier,
 					require("null-ls").builtins.diagnostics.eslint_d,
+					require("null-ls").builtins.formatting.eslint_d,
 					require("null-ls").builtins.code_actions.eslint_d,
 
 					-- lua
@@ -89,7 +99,20 @@ function module.init(use)
 					require("null-ls").builtins.formatting.rustfmt,
 
 					-- spellcheck
-					require("null-ls").builtins.diagnostics.codespell,
+					require("null-ls").builtins.diagnostics.codespell.with({
+						args = { "--builtin", "clear,rare,code", "-" },
+						filetypes = {},
+					}),
+					require("null-ls").builtins.formatting.codespell.with({
+						args = { "--write-changes", "$FILENAME" },
+						filetypes = {},
+					}),
+					require("null-ls").builtins.code_actions.proselint.with({
+						filetypes = { "markdown", "markdown.pandoc", "tex", "rmd" },
+					}),
+					require("null-ls").builtins.diagnostics.proselint.with({
+						filetypes = { "markdown", "markdown.pandoc", "tex", "rmd" },
+					}),
 				},
 				on_attach = on_attach,
 				capabilities = capabilities,

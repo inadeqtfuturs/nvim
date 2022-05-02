@@ -1,7 +1,5 @@
 # if.nvim
 
-nvim configuration
-
-## todo
+## Todo
 
 - [ ] js/react snippets

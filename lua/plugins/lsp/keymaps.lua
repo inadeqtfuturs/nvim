@@ -1,10 +1,11 @@
 local module = {}
 
-function module.setup()
+function module.setup(bufnr)
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	if WKOpts then
 		local wk = require("which-key")
 
-		local mappings = {
+		local keymap_g = {
 			a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
 			D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
 			d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
@@ -15,7 +16,17 @@ function module.setup()
 			l = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", "Show line diagnostics" },
 		}
 
-		wk.register(mappings, {
+		local keymap_l = {
+			l = {
+				name = "LSP",
+				a = { "<cmd>Telescope lsp_code_actions<CR>", "Code Action" },
+				d = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },
+				r = { "<cmd>Telescope lsp_references<CR>", "References" },
+				s = { "<cmd>Telescope lsp_document_symbols<CR>", "Document Symbols" },
+			},
+		}
+
+		wk.register(keymap_g, {
 			mode = "n",
 			prefix = "g",
 			buffer = nil,
@@ -23,6 +34,8 @@ function module.setup()
 			noremap = true,
 			nowait = true,
 		})
+
+		wk.register(keymap_l, WKOpts)
 	end
 end
 

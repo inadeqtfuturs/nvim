@@ -39,11 +39,11 @@ return require("packer").startup(function(use)
 		"indent_blankline",
 		"autopairs",
 		"autotag",
+		"surround",
 		"comments",
 		"cool",
 		"lightspeed",
 		"neogen",
-		"orgmode",
 
 		-- terminal
 		"toggleterm",
@@ -53,13 +53,10 @@ return require("packer").startup(function(use)
 		"blamer",
 		"octo",
 
+		"neorg",
+
 		-- lualine
 		"lualine",
-
-		-- lush
-		"lush",
-
-		"neorg",
 	}
 
 	for i, name in ipairs(configs) do

@@ -99,20 +99,8 @@ function module.init(use)
 					require("null-ls").builtins.formatting.rustfmt,
 
 					-- spellcheck
-					require("null-ls").builtins.diagnostics.codespell.with({
-						args = { "--builtin", "clear,rare,code", "-" },
-						filetypes = {},
-					}),
-					require("null-ls").builtins.formatting.codespell.with({
-						args = { "--write-changes", "$FILENAME" },
-						filetypes = {},
-					}),
-					require("null-ls").builtins.code_actions.proselint.with({
-						filetypes = { "markdown", "markdown.pandoc", "tex", "rmd" },
-					}),
-					require("null-ls").builtins.diagnostics.proselint.with({
-						filetypes = { "markdown", "markdown.pandoc", "tex", "rmd" },
-					}),
+					require("null-ls").builtins.diagnostics.codespell,
+					require("null-ls").builtins.formatting.codespell,
 				},
 				on_attach = on_attach,
 				capabilities = capabilities,

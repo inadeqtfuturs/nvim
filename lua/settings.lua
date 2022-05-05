@@ -34,6 +34,7 @@ opt.softtabstop = 2
 opt.expandtab = true
 
 opt.cursorline = true
+opt.scrolloff = 8
 
 -- keep multiple buffers open
 opt.hidden = true

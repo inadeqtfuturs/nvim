@@ -15,6 +15,9 @@ function module.init(use)
 					enable = true,
 					update_cwd = false,
 				},
+				git = {
+					ignore = false,
+				},
 			})
 		end,
 	})

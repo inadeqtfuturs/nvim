@@ -39,6 +39,7 @@ function module.init(use)
 						},
 					},
 				},
+				solargraph = {},
 				sumneko_lua = {
 					settings = {
 						Lua = {

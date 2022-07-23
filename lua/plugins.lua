@@ -35,6 +35,7 @@ return require("packer").startup(function(use)
     "toggleterm",
 
     "gitsigns",
+    "diffview",
     "blamer",
     "octo",
 

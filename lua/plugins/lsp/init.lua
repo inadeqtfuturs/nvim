@@ -11,6 +11,7 @@ function module.init(use)
 			{ "nvim-lua/plenary.nvim" },
 			{ "simrat39/rust-tools.nvim" },
 			{ "RRethy/vim-illuminate" },
+			{ "semanticart/ruby-code-actions.nvim" },
 		},
 
 		config = function()
@@ -87,6 +88,8 @@ function module.init(use)
 			-- servers
 			require("plugins.lsp.installer").setup(servers, opts)
 
+			local ruby_code_actions = require("ruby-code-actions")
+
 			-- null-ls
 			require("null-ls").setup({
 				sources = {
@@ -110,7 +113,11 @@ function module.init(use)
 
 					-- spellcheck
 					require("null-ls").builtins.diagnostics.codespell,
-					require("null-ls").builtins.formatting.codespell,
+					-- require("null-ls").builtins.formatting.codespell,
+
+					-- now require any ruby-code-actions you want
+					ruby_code_actions.insert_frozen_string_literal,
+					ruby_code_actions.autocorrect_with_rubocop,
 				},
 				on_attach = on_attach,
 				capabilities = capabilities,

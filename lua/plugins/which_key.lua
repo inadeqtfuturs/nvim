@@ -54,6 +54,7 @@ function module.init(use)
 				["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Toggle" },
 				["c"] = { "<cmd>BufferClose!<CR>", "Close Buffer" },
 				["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+				["E"] = { "<cmd>NvimTreeCollapse<CR>", "Collapse Explorer" },
 				["f"] = { "<cmd>Telescope find_files<CR>", "Find Files" },
 				["w"] = { "<cmd>w!<CR>", "Save" },
 				["q"] = { "<cmd>q!<CR>", "Quit" },

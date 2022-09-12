@@ -6,6 +6,8 @@ function module.init(use)
 		config = function()
 			vim.cmd([[
         colorscheme substrata
+
+        hi link WhichKeySeparator constant
       ]])
 		end,
 	})

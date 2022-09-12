@@ -1,31 +1,17 @@
-local lsp_installer_servers = require("nvim-lsp-installer.servers")
+local mason_lspconfig = require("mason-lspconfig")
+local lspconfig = require("lspconfig")
 
 local module = {}
 
 function module.setup(servers, options)
-	for server_name, _ in pairs(servers) do
-		local server_available, server = lsp_installer_servers.get_server(server_name)
+	mason_lspconfig.setup({
+		ensure_installed = vim.tbl_keys(servers),
+		automatic_installation = false,
+	})
 
-		if server_available then
-			server:on_ready(function()
-				local opts = vim.tbl_deep_extend("force", options, servers[server.name] or {})
-
-				if server.name == "rust_analyzer" then
-					require("rust-tools").setup({
-						server = vim.tbl_deep_extend("force", server:get_default_options(), opts),
-					})
-					server:attach_buffers()
-				else
-					server:setup(opts)
-				end
-			end)
-
-			if not server:is_installed() then
-				server:install()
-			end
-		else
-			print("error in:", server.name)
-		end
+	for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
+		local opts = vim.tbl_deep_extend("force", options, servers[server] or {})
+		lspconfig[server].setup(opts)
 	end
 end
 

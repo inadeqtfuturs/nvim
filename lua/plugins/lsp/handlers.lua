@@ -1,6 +1,6 @@
 local module = {}
 
-function module.setup()
+function module.setup(client)
 	local lsp = {
 		float = {
 			focusable = true,
@@ -13,6 +13,7 @@ function module.setup()
 				focusable = true,
 				style = "minimal",
 				border = "rounded",
+				winblend = 0,
 			},
 		},
 	}
@@ -37,12 +38,16 @@ function module.setup()
 		},
 	})
 
-	vim.cmd([[
-    augroup Format
-      au! * <buffer>
-      au BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
-    augroup END
-  ]])
+	if client.name == "null-ls" then
+		client.resolved_capabilities.document_formatting = true
+		client.resolved_capabilities.document_range_formatting = true
+		vim.cmd([[
+       augroup Format
+         au! * <buffer>
+         au BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
+       augroup END
+     ]])
+	end
 end
 
 return module

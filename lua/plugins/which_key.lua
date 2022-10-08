@@ -52,7 +52,7 @@ function module.init(use)
 			local mappings = {
 				[";"] = { "<cmd>Dashboard<CR>", "Dashboard" },
 				["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Toggle" },
-				["c"] = { "<cmd>BufferClose!<CR>", "Close Buffer" },
+				["c"] = { "<cmd>:Bdelete<CR>", "Close Buffer" },
 				["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
 				["E"] = { "<cmd>NvimTreeCollapse<CR>", "Collapse Explorer" },
 				["f"] = { "<cmd>Telescope find_files<CR>", "Find Files" },

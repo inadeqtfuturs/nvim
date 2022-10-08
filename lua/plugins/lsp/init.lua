@@ -63,6 +63,9 @@ function module.init(use)
 								location = os.getenv("HOME") .. "/.nvm/versions/node/v17.6.0/lib",
 							},
 						},
+						preferences = {
+							disableSuggestions = true,
+						},
 					},
 				},
 				yamlls = {},
@@ -75,14 +78,15 @@ function module.init(use)
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 			local function on_attach(client, bufnr)
+				if client.name ~= "null-ls" then
+					client.server_capabilities.document_formatting = false -- 0.7 and earlier
+					client.resolved_capabilities.document_formatting = false
+					client.resolved_capabilities.document_range_formatting = false
+				end
+
 				require("plugins.lsp.keymaps").setup(bufnr)
 				require("plugins.lsp.highlighter").setup()
-				require("plugins.lsp.handlers").setup()
-
-				if client.name == "tsserver" then
-					client.resolved_capabilities.document_formatting = false
-					vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
-				end
+				require("plugins.lsp.handlers").setup(client)
 			end
 
 			local opts = {

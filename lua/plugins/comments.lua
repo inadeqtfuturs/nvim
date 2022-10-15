@@ -11,10 +11,10 @@ function module.init(use)
 				local wk = require("which-key")
 
 				local mappings = {
-					b = { "Comment block" },
-					c = {
+					B = { "Comment block" },
+					C = {
 						name = "Comment line",
-						c = { "count" },
+						C = { "count" },
 					},
 				}
 

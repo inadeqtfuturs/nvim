@@ -13,55 +13,34 @@ return require("packer").startup(function(use)
 		-- theme
 		"substrata",
 
-		-- dashboard
+		"which_key",
 		"dashboard",
-
-		-- treesitter
 		"treesitter",
-
-		-- finder
 		"telescope",
-
-		-- file tree
 		"nvimtree",
 
-		-- autocomplete
 		"cmp",
-
-		-- formatting // linting
-		"null_ls_config",
-
-		-- lsp
 		"lsp",
 
-		-- ide
-		"barbar",
+		"bufferline",
 		"indent_blankline",
 		"autopairs",
 		"autotag",
+		"surround",
 		"comments",
 		"cool",
 		"lightspeed",
 
-		-- terminal
 		"toggleterm",
 
-		-- git
 		"gitsigns",
+		"diffview",
 		"blamer",
-		"octo",
 
-		-- which key
-		"which_key",
-
-		-- lualine
 		"lualine",
-
-		-- lush
-		"lush",
 	}
 
-	for i, name in ipairs(configs) do
+	for _, name in ipairs(configs) do
 		require("plugins/" .. name).init(use)
 	end
 

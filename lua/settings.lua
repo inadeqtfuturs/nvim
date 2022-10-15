@@ -34,8 +34,9 @@ opt.softtabstop = 2
 opt.expandtab = true
 
 opt.cursorline = true
+opt.scrolloff = 10
 
--- keep multple buffers open
+-- keep multiple buffers open
 opt.hidden = true
 
 -- enable mouse interaction
@@ -43,7 +44,7 @@ opt.mouse = "a"
 
 opt.pumheight = 10
 
--- highlight text after yank
+-- highlight tesdfxt after yank
 vim.cmd([[
   augroup highlight_yank
     autocmd!

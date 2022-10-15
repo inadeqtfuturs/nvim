@@ -2,16 +2,16 @@
 vim.g.mapleader = " "
 
 -- split navigation
-map("", "<S-h>", "<c-w>h")
-map("", "<S-j>", "<c-w>j")
-map("", "<S-k>", "<c-w>k")
-map("", "<S-l>", "<c-w>l")
+map("", "<C-h>", "<c-w>h")
+map("", "<C-j>", "<c-w>j")
+map("", "<C-k>", "<c-w>k")
+map("", "<C-l>", "<c-w>l")
 
 -- window navigation
-map("", "<C-h>", "<C-w>h")
-map("", "<C-j>", "<C-w>j")
-map("", "<C-k>", "<C-w>k")
-map("", "<C-l>", "<C-w>l")
+-- map("", "<M-h>", "<C-w>h")
+-- map("", "<M-j>", "<C-w>j")
+-- map("", "<M-k>", "<C-w>k")
+-- map("", "<M-l>", "<C-w>l")
 
 -- Move current line / block with Alt-j/k a la vscode.
 map("", "<A-j>", ":m .+1<CR>==")

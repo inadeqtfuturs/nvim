@@ -11,18 +11,26 @@ function module.init(use)
 			})
 
 			local Terminal = require("toggleterm.terminal").Terminal
-			local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+			local lazygit = Terminal:new({
+				cmd = "lazygit",
+				direction = "float",
+				hidden = true,
+				float_opts = { border = "curved" },
+			})
 
 			function _lazygit_toggle()
 				lazygit:toggle()
 			end
 
-			vim.api.nvim_set_keymap(
-				"n",
-				"<leader>gg",
-				"<cmd>lua _lazygit_toggle()<CR>",
-				{ noremap = true, silent = true }
-			)
+			if WKOpts then
+				local wk = require("which-key")
+
+				local mappings = {
+					G = { "<cmd>lua _lazygit_toggle()<CR>", "LazyGit" },
+				}
+
+				wk.register(mappings, WKOpts)
+			end
 		end,
 	})
 end

@@ -21,6 +21,7 @@ function module.init(use)
 				local wk = require("which-key")
 
 				local mappings = {
+					name = "Gitsigns",
 					b = { "Blame line" },
 					p = { "Preview hunk" },
 					R = { "Reset buffer" },
@@ -33,13 +34,14 @@ function module.init(use)
 				}
 
 				local vmappings = {
+					name = "Gitsigns",
 					s = { "Stage hunk" },
 					r = { "Reset hunk" },
 				}
 
 				wk.register(mappings, {
 					mode = "n",
-					prefix = "h",
+					prefix = "<leader>h",
 					buffer = nil,
 					silent = true,
 					noremap = true,
@@ -48,7 +50,7 @@ function module.init(use)
 
 				wk.register(vmappings, {
 					mode = "v",
-					prefix = "h",
+					prefix = "<leader>h",
 					buffer = nil,
 					silent = true,
 					noremap = true,

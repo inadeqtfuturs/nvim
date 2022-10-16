@@ -84,9 +84,9 @@ function module.init(use)
 					client.resolved_capabilities.document_range_formatting = false
 				end
 
-				require("plugins.lsp.keymaps").setup(bufnr)
-				require("plugins.lsp.highlighter").setup()
-				require("plugins.lsp.handlers").setup(client)
+				require("lsp.keymaps").setup(bufnr)
+				require("lsp.highlighter").setup()
+				require("lsp.handlers").setup(client)
 			end
 
 			local opts = {
@@ -96,7 +96,7 @@ function module.init(use)
 
 			-- servers
 			require("mason").setup()
-			require("plugins.lsp.installer").setup(servers, opts)
+			require("lsp.installer").setup(servers, opts)
 
 			-- null-ls
 			require("null-ls").setup({
@@ -140,6 +140,8 @@ function module.init(use)
 			})
 		end,
 	})
+
+	initialize(use, "lsp", { "cmp", "cool" })
 end
 
 return module

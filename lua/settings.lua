@@ -36,6 +36,8 @@ opt.expandtab = true
 opt.cursorline = true
 opt.scrolloff = 10
 
+opt.showmode = false
+
 -- keep multiple buffers open
 opt.hidden = true
 
@@ -51,3 +53,15 @@ vim.cmd([[
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Search", timeout=200}
   augroup END
 ]])
+
+-- remap leader to space
+vim.g.mapleader = " "
+
+-- split navigation
+map("", "<C-h>", "<c-w>h")
+map("", "<C-j>", "<c-w>j")
+map("", "<C-k>", "<c-w>k")
+map("", "<C-l>", "<c-w>l")
+
+-- save
+map("", "<C-s>", ":w<cr>")

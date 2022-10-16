@@ -49,6 +49,7 @@ function module.init(use)
 				hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
 			})
 
+			-- TODO: move into `api`
 			local mappings = {
 				[";"] = { "<cmd>Dashboard<CR>", "Dashboard" },
 				["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Toggle" },

@@ -3,6 +3,7 @@ local module = {}
 function module.init(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		commit = "addc129a4f272aba0834bd0a7b6bd4ad5d8c801b",
 		requires = {
 			{ "JoosepAlviste/nvim-ts-context-commentstring", "nvim-treesitter/playground" },
 		},

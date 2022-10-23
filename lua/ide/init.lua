@@ -11,6 +11,7 @@ function module.init(use)
 		"telescope",
 		"toggleterm",
 		"treesitter",
+		"todo",
 	}
 
 	initialize(use, "ide", config)

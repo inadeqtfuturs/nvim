@@ -5,7 +5,9 @@ function module.init(use)
 		"numToStr/Comment.nvim",
 		commit = "eb0a84a2ea42858a2bb3cdf5fabe54e7c700555d",
 		config = function()
-			require("Comment").setup()
+			require("Comment").setup({
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			})
 
 			if WKOpts then
 				local wk = require("which-key")

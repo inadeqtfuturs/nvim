@@ -73,15 +73,14 @@ function module.init(use)
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			if package.loaded["cmp_nvim_lsp"] then
-				capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+				capabilities = require("cmp_nvim_lsp").default_capabilities()
 			end
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 			local function on_attach(client, bufnr)
 				if client.name ~= "null-ls" then
-					client.server_capabilities.document_formatting = false -- 0.7 and earlier
-					client.resolved_capabilities.document_formatting = false
-					client.resolved_capabilities.document_range_formatting = false
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentRangeFormattingProvider = false
 				end
 
 				require("lsp.keymaps").setup(bufnr)

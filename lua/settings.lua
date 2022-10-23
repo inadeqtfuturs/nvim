@@ -3,6 +3,7 @@ local opt = vim.opt
 
 -- correctly set temrinal colors
 vim.o.termguicolors = true
+vim.opt.encoding = "utf-8"
 
 -- timeout
 opt.timeoutlen = 100

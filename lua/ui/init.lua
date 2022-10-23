@@ -5,7 +5,8 @@ function module.init(use)
 		"substrata",
 		"bufferline",
 		"lualine",
-		"nvimtree",
+		--[[ "nvimtree", ]]
+		"neotree",
 	}
 
 	initialize(use, "ui", config)

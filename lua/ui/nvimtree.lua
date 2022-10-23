@@ -19,6 +19,11 @@ function module.init(use)
 					ignore = false,
 				},
 			})
+
+			local mappings = {
+				["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+			}
+			require("which-key").register(mappings, WKOpts)
 		end,
 	})
 end

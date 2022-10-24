@@ -55,6 +55,13 @@ function module.init(use)
 					},
 				},
 
+				filesystem = {
+					filtered_items = {
+						hide_dotfiles = false,
+						hide_gitignored = true,
+					},
+					follow_current_file = true,
+				},
 				buffers = {},
 				git_status = {},
 				source_selector = {

@@ -28,6 +28,8 @@ function module.init(use)
 				},
 				intelephense = {},
 				jsonls = {},
+				graphql = {},
+				marksman = {},
 				rust_analyzer = {
 					settings = {
 						["rust-analyzer"] = {
@@ -39,13 +41,7 @@ function module.init(use)
 						},
 					},
 				},
-				solargraph = {
-					settings = {
-						solargraph = {
-							diagnostics = true,
-						},
-					},
-				},
+				solargraph = {},
 				sumneko_lua = {
 					settings = {
 						Lua = {
@@ -115,6 +111,7 @@ function module.init(use)
 					require("null-ls").builtins.diagnostics.rubocop.with({
 						prefer_local = "bin",
 					}),
+
 					require("null-ls").builtins.formatting.rubocop.with({
 						prefer_local = "bin",
 						args = {

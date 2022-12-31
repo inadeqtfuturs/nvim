@@ -3,9 +3,10 @@ module = {}
 function module.init(use)
 	local config = {
 		"substrata",
+		-- "oxocarbon",
 		"bufferline",
+		-- "heirline",
 		"lualine",
-		--[[ "nvimtree", ]]
 		"neotree",
 	}
 

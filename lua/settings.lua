@@ -3,7 +3,6 @@ local opt = vim.opt
 
 -- correctly set temrinal colors
 vim.o.termguicolors = true
-vim.opt.encoding = "utf-8"
 
 -- timeout
 opt.timeoutlen = 100
@@ -52,6 +51,11 @@ vim.cmd([[
   augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Search", timeout=200}
+  augroup END
+
+  augroup Markdown
+    autocmd!
+    autocmd FileType markdown set wrap
   augroup END
 ]])
 

@@ -75,9 +75,9 @@ local module = {
 				client.server_capabilities.documentRangeFormattingProvider = false
 			end
 
-			require("lsp.keymaps").setup(bufnr)
-			require("lsp.highlighter").setup()
-			require("lsp.handlers").setup(client)
+			require("plugins.lsp.keymaps").setup(bufnr)
+			require("plugins.lsp.highlighter").setup()
+			require("plugins.lsp.handlers").setup(client)
 		end
 
 		local opts = {
@@ -87,7 +87,7 @@ local module = {
 
 		-- servers
 		require("mason").setup()
-		require("lsp.installer").setup(servers, opts)
+		require("plugins.lsp.installer").setup(servers, opts)
 
 		-- null-ls
 		require("null-ls").setup({

@@ -1,3 +1,4 @@
 require("utils")
 require("settings")
-require("plugins")
+--[[ require("plugins-old") ]]
+require("lazy-config")

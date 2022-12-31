@@ -1,5 +1,7 @@
 -- bootstrap packer
 local fn = vim.fn
+
+-- packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
 	fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
@@ -12,14 +14,7 @@ if not status_ok then
 	return
 end
 
--- Have packer use a popup window
-packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-})
+-- lazy
 
 return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim" })

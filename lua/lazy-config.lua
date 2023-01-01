@@ -22,6 +22,8 @@ local folders = {
 	"ide",
 }
 
+-- in each plugin folder, find the `init.lua` and load
+-- each plugin returned from the module
 for _, folder in ipairs(folders) do
 	local init_map = require("plugins." .. folder .. ".init")
 	for _, file in ipairs(init_map) do

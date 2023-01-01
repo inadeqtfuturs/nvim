@@ -4,5 +4,6 @@ return {
 	"bufferline",
 	-- "heirline",
 	"lualine",
-	"neotree",
+	--[[ "neotree", ]]
+	"nvimtree",
 }

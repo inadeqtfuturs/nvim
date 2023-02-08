@@ -1,6 +1,7 @@
 local module = {
 	"akinsho/bufferline.nvim",
 	dependencies = { { "kyazdani42/nvim-web-devicons" }, { "moll/vim-bbye" } },
+	commit = "688cdc30643f67db2d619bd4d8e0519f36f1c464",
 	config = function()
 		require("bufferline").setup({})
 		local map = vim.api.nvim_set_keymap
@@ -8,16 +9,6 @@ local module = {
 
 		map("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
 		map("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
-
-		function close_all()
-			local current = vim.api.nvim_get_current_buf()
-			local buffers = require("bufferline.utils").get_valid_buffers()
-			for _, bufnr in pairs(buffers) do
-				if bufnr ~= current then
-					pcall(vim.cmd, string.format("bd %d", bufnr))
-				end
-			end
-		end
 
 		if WKOpts then
 			local wk = require("which-key")
@@ -27,10 +18,6 @@ local module = {
 					name = "Buffers",
 					j = { "<cmd>BufferLinePick<cr>", "Jump" },
 					f = { "<cmd>Telescope buffers<cr>", "Find" },
-					e = {
-						"<cmd>lua close_all()<cr>",
-						"Close all but current",
-					},
 					h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
 					l = {
 						"<cmd>BufferLineCloseRight<cr>",

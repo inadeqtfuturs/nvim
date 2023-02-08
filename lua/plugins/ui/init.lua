@@ -1,7 +1,7 @@
 return {
 	"substrata",
 	-- "oxocarbon",
-	"bufferline",
+	"buffer-line",
 	-- "heirline",
 	"lualine",
 	--[[ "neotree", ]]

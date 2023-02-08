@@ -97,6 +97,9 @@ local module = {
 				require("null-ls").builtins.formatting.eslint_d,
 				require("null-ls").builtins.code_actions.eslint_d,
 
+				-- json
+				require("null-ls").builtins.formatting.fixjson,
+
 				-- lua
 				require("null-ls").builtins.formatting.stylua,
 
@@ -110,14 +113,6 @@ local module = {
 
 				require("null-ls").builtins.formatting.rubocop.with({
 					prefer_local = "bin",
-					args = {
-						"-c",
-						"~/.rubocop.yml",
-						"-f",
-						"json",
-						"--stdin",
-						"$FILENAME",
-					},
 				}),
 
 				-- rust

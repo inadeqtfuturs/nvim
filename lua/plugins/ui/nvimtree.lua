@@ -1,5 +1,6 @@
 local module = {
 	"kyazdani42/nvim-tree.lua",
+	commit = "8b8d457",
 	dependencies = "kyazdani42/nvim-web-devicons",
 	config = function()
 		require("nvim-tree").setup({

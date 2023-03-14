@@ -7,6 +7,9 @@ vim.o.termguicolors = true
 -- timeout
 opt.timeoutlen = 100
 
+vim.o.winblend = 25
+vim.o.pumblend = 25
+
 -- clipboard
 vim.o.clipboard = "unnamed,unnamedplus"
 

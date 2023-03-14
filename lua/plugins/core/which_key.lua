@@ -7,6 +7,15 @@ WKOpts = {
 	nowait = true, -- use `nowait` when creating keymaps
 }
 
+WKOptsNoLeader = {
+	mode = "n", -- NORMAL mode
+	prefix = "",
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps
+}
+
 WKVOpts = {
 	mode = "v",
 	prefix = "<leader>",
@@ -65,11 +74,16 @@ local module = {
 			},
 		}
 
+		local noLeader = {
+			["<BS>"] = { "<cmd>Telescope buffers<CR>", "Open Buffers" },
+		}
+
 		local vmappings = {
 			["/"] = { "<ESC><CMD>lua require('Comment.api').gc(vim.fn.visualmode())<CR>", "Comment" },
 		}
 
 		require("which-key").register(mappings, WKOpts)
+		require("which-key").register(noLeader, WKOptsNoLeader)
 		require("which-key").register(vmappings, WKVOpts)
 	end,
 }

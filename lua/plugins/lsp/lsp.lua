@@ -38,7 +38,7 @@ local module = {
 				},
 			},
 			solargraph = {},
-			sumneko_lua = {
+			lua_ls = {
 				settings = {
 					Lua = {
 						diagnostics = {

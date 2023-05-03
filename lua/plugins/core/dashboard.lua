@@ -1,5 +1,6 @@
 local module = {
 	"glepnir/dashboard-nvim",
+	priority = 1001,
 	event = "VimEnter",
 	opts = {
 		theme = "doom",

@@ -47,6 +47,11 @@ local module = {
 					},
 				},
 			},
+			theme_check = {
+				root_dir = function()
+					return vim.loop.cwd()
+				end,
+			},
 			tsserver = {
 				init_options = {
 					plugins = {
@@ -60,7 +65,16 @@ local module = {
 					},
 				},
 			},
-			yamlls = {},
+			yamlls = {
+				settings = {
+					yaml = {
+						keyOrdering = false,
+						schemas = {
+							["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+						},
+					},
+				},
+			},
 		}
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -96,6 +110,11 @@ local module = {
 				require("null-ls").builtins.diagnostics.eslint_d,
 				require("null-ls").builtins.formatting.eslint_d,
 				require("null-ls").builtins.code_actions.eslint_d,
+
+				-- liquid
+				require("null-ls").builtins.formatting.prettier.with({
+					filetypes = { "liquid" },
+				}),
 
 				-- json
 				require("null-ls").builtins.formatting.fixjson,

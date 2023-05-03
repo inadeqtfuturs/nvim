@@ -44,7 +44,7 @@ function module.setup(client)
 		vim.cmd([[
        augroup Format
          au! * <buffer>
-         au BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
+         au BufWritePre <buffer> lua vim.lsp.buf.format()
        augroup END
      ]])
 	end

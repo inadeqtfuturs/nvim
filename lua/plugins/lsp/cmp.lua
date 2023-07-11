@@ -10,10 +10,6 @@ local module = {
 		-- vsnip
 		{ "hrsh7th/cmp-vsnip" },
 		{ "hrsh7th/vim-vsnip" },
-
-		-- snippy
-		{ "dcampos/nvim-snippy" },
-		{ "dcampos/cmp-snippy" },
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -96,11 +92,10 @@ local module = {
 			},
 
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "vsnip" },
-				-- { name = "snippy" },
-			}, {
+				{ name = "vsnip", priority = 700 },
+				{ name = "nvim_lsp", priority = 500 },
 				{ name = "buffer" },
+				{ name = "path" },
 			}),
 
 			-- experimental

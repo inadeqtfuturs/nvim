@@ -6,13 +6,15 @@ module = {
 			autoload = true,
 		})
 
-		--[[ vim.api.nvim_create_autocmd({ "User" }, { ]]
-		--[[ 	pattern = "PersistedSavePre", ]]
-		--[[ 	group = vim.api.nvim_create_augroup("PersistedHooks", {}), ]]
-		--[[ 	callback = function() ]]
-		--[[ 		pcall(vim.cmd, "NvimTreeClose") ]]
-		--[[ 	end, ]]
-		--[[ }) ]]
+		-- close nvim tree before saving session
+		vim.api.nvim_create_autocmd({ "User" }, {
+			pattern = "PersistedSavePre",
+			group = vim.api.nvim_create_augroup("PersistedHooks", {}),
+			callback = function()
+				pcall(vim.cmd, "NvimTreeClose")
+				pcall(vim.cmd, "TroubleClose")
+			end,
+		})
 	end,
 }
 

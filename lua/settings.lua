@@ -46,7 +46,7 @@ opt.mouse = "a"
 
 opt.pumheight = 10
 
--- highlight tesdfxt after yank
+-- highlight text after yank
 vim.cmd([[
   augroup highlight_yank
     autocmd!

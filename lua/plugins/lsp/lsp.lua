@@ -38,6 +38,16 @@ local module = {
 				},
 			},
 			solargraph = {},
+			stylelint_lsp = {
+				settings = {
+					stylelintplus = {
+						-- see available options in stylelint-lsp documentation
+						configFile = "./.stylelintrc.js",
+						autoFixOnSave = true,
+						autoFixOnFormat = true,
+					},
+				},
+			},
 			lua_ls = {
 				settings = {
 					Lua = {

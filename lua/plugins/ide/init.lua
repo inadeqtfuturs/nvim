@@ -7,7 +7,8 @@ return {
 	"session",
 	"surround",
 	"telescope",
+	"todo",
 	"toggleterm",
 	"treesitter",
-	"todo",
+	"trouble",
 }

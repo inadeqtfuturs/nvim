@@ -1,6 +1,6 @@
 return {
-	"substrata",
-	--[[ "catppuccin", ]]
+	"onenord",
+	--[[ "substrata", ]]
 	"buffer-line",
 	"lualine",
 	"lush",

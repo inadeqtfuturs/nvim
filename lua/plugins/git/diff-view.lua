@@ -1,6 +1,5 @@
 module = {
 	"sindrets/diffview.nvim",
-	commit = "85903aa26257a4ea42c4bdbf3c998a2006aaaec5",
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
 	},

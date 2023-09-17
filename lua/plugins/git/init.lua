@@ -1,1 +1,1 @@
-return { "gitsigns", "diff-view", "blamer" }
+return { "gitsigns", "blamer" }

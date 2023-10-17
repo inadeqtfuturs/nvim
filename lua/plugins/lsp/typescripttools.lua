@@ -5,6 +5,7 @@ module = {
 	config = function()
 		local api = require("typescript-tools.api")
 		require("typescript-tools").setup({
+			tsserver_max_memory = "auto",
 			tsserver_plugins = {
 				-- for TypeScript v4.9+
 				"@styled/typescript-styled-plugin",
@@ -14,10 +15,7 @@ module = {
 				client.server_capabilities.documentRangeFormattingProvider = false
 			end,
 			handlers = {
-				["textDocument/publishDiagnostics"] = api.filter_diagnostics(
-					-- Ignore 'This may be converted to an async function' diagnostics.
-					{ 80001 }
-				),
+				["textDocument/publishDiagnostics"] = api.filter_diagnostics({ 80001 }),
 			},
 		})
 	end,

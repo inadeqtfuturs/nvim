@@ -1,6 +1,6 @@
 module = {
 	"folke/trouble.nvim",
-	dependencies = { "kyazdani42/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local wk = require("which-key")
 		local mappings = {

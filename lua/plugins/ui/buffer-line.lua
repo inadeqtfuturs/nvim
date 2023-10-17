@@ -1,6 +1,6 @@
 local module = {
 	"akinsho/bufferline.nvim",
-	dependencies = { { "kyazdani42/nvim-web-devicons" }, { "moll/vim-bbye" } },
+	dependencies = { { "nvim-tree/nvim-web-devicons" }, { "moll/vim-bbye" } },
 	commit = "688cdc30643f67db2d619bd4d8e0519f36f1c464",
 	config = function()
 		require("bufferline").setup({})

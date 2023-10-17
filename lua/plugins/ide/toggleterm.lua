@@ -22,7 +22,7 @@ local module = {
 			float_opts = { border = "curved" },
 		})
 
-		function _lazygit_toggle()
+		function local_lazygit_toggle()
 			lazygit:toggle()
 		end
 
@@ -30,7 +30,7 @@ local module = {
 			local wk = require("which-key")
 
 			local mappings = {
-				G = { "<cmd>lua _lazygit_toggle()<CR>", "LazyGit" },
+				G = { "<cmd>lua local_lazygit_toggle()<CR>", "LazyGit" },
 			}
 
 			wk.register(mappings, WKOpts)

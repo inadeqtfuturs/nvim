@@ -1,11 +1,19 @@
 local module = {
 	"lukas-reineke/indent-blankline.nvim",
+	main = "ibl",
 	config = function()
-		require("indent_blankline").setup({
-			use_treesitter = true,
-			buftype_exclude = { "terminal", "nofile", "dashboard", "lsp-installer", "lspinfo" },
-			filetype_exclude = { "help", "terminal", "dashboard", "packer" },
-			space_char_blankline = " ",
+		require("ibl").setup({
+			exclude = {
+				buftypes = { "terminal", "nofile", "dashboard", "lsp-installer", "lspinfo" },
+				filetypes = { "help", "terminal", "dashboard", "packer" },
+			},
+			scope = {
+				enabled = false,
+			},
+			indent = {
+				char = "│",
+				tab_char = "│",
+			},
 		})
 
 		vim.opt.list = true

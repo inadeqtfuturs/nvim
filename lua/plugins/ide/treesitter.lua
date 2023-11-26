@@ -6,10 +6,6 @@ local module = {
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = "all",
 			ignore_install = { "phpdoc", "markdown" },
-			context_commentstring = {
-				enable = true,
-				enable_autocmd = false,
-			},
 			highlight = {
 				use_languagetree = true,
 				enable = true,
@@ -22,6 +18,8 @@ local module = {
 				highlight_current_scope = { enable = false },
 			},
 		})
+
+		vim.g.skip_ts_context_commentstring_module = true
 
 		-- additional parser configs
 		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()

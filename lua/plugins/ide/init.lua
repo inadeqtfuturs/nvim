@@ -4,6 +4,7 @@ return {
 	"comments",
 	"indent_blankline",
 	"lightspeed",
+	"noice",
 	"session",
 	"surround",
 	"telescope",

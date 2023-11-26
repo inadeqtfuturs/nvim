@@ -63,15 +63,6 @@ local module = {
 			["f"] = { "<cmd>Telescope find_files<CR>", "Find Files" },
 			["w"] = { "<cmd>w!<CR>", "Save" },
 			["q"] = { "<cmd>q!<CR>", "Quit" },
-
-			p = {
-				name = "Packer",
-				c = { "<cmd>PackerCompile<cr>", "Compile" },
-				i = { "<cmd>PackerInstall<cr>", "Install" },
-				s = { "<cmd>PackerSync<cr>", "Sync" },
-				S = { "<cmd>PackerStatus<cr>", "Status" },
-				u = { "<cmd>PackerUpdate<cr>", "Update" },
-			},
 		}
 
 		local noLeader = {

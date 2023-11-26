@@ -69,4 +69,4 @@ map("", "<C-k>", "<c-w>k")
 map("", "<C-l>", "<c-w>l")
 
 -- save
-map("", "<C-s>", ":w<cr>")
+map("", "<C-s>", ":w<cr>", { silent = true })

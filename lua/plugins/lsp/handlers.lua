@@ -39,12 +39,12 @@ function module.setup(client)
 	})
 
 	if client.name == "null-ls" then
-		client.resolved_capabilities.document_formatting = true
-		client.resolved_capabilities.document_range_formatting = true
+		client.server_capabilities.documentFormattingProvider = true
+		client.server_capabilities.documentRangeFormattingProvider = true
 		vim.cmd([[
        augroup Format
          au! * <buffer>
-         au BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
+         au BufWritePre <buffer> lua vim.lsp.buf.format()
        augroup END
      ]])
 	end

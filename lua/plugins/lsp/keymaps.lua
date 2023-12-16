@@ -5,6 +5,8 @@ function module.setup(bufnr)
 	if WKOpts then
 		local wk = require("which-key")
 
+		vim.api.nvim_set_keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
+
 		local keymap_g = {
 			a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
 			D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },

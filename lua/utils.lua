@@ -10,3 +10,12 @@ end
 function _G.t(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
+
+-- used for initializing plugin folders
+function _G.initialize(use, namespace, config)
+	if config ~= nil then
+		for _, name in ipairs(config) do
+			require(namespace .. "/" .. name).init(use)
+		end
+	end
+end

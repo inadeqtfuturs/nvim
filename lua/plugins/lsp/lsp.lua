@@ -3,8 +3,9 @@ local module = {
 	dependencies = {
 		{ "williamboman/mason.nvim" },
 		{ "williamboman/mason-lspconfig.nvim" },
+		{ "neovim/nvim-lspconfig" },
 		{ "ray-x/lsp_signature.nvim" },
-		{ "jose-elias-alvarez/null-ls.nvim" },
+		{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 		{ "nvim-lua/plenary.nvim" },
 		{ "simrat39/rust-tools.nvim" },
 	},
@@ -63,19 +64,6 @@ local module = {
 					return vim.loop.cwd()
 				end,
 			},
-			--[[ tsserver = { ]]
-			--[[ 	init_options = { ]]
-			--[[ 		plugins = { ]]
-			--[[ 			{ ]]
-			--[[ 				name = "typescript-styled-plugin", ]]
-			--[[ 				location = os.getenv("HOME") .. "/.nvm/versions/node/v17.6.0/lib", ]]
-			--[[ 			}, ]]
-			--[[ 		}, ]]
-			--[[ 		preferences = { ]]
-			--[[ 			disableSuggestions = true, ]]
-			--[[ 		}, ]]
-			--[[ 	}, ]]
-			--[[ }, ]]
 			yamlls = {
 				settings = {
 					yaml = {
@@ -95,11 +83,6 @@ local module = {
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 		local function on_attach(client, bufnr)
-			if client.name ~= "null-ls" then
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
-			end
-
 			require("plugins.lsp.keymaps").setup(bufnr)
 			require("plugins.lsp.highlighter").setup()
 			require("plugins.lsp.handlers").setup(client)
@@ -113,50 +96,11 @@ local module = {
 		-- servers
 		require("mason").setup()
 		require("plugins.lsp.installer").setup(servers, opts)
-
-		-- null-ls
-		require("null-ls").setup({
-			sources = {
-				-- js
-				require("null-ls").builtins.diagnostics.eslint_d,
-				require("null-ls").builtins.formatting.eslint_d,
-				require("null-ls").builtins.code_actions.eslint_d,
-
-				-- liquid
-				require("null-ls").builtins.formatting.prettier.with({
-					filetypes = { "liquid" },
-				}),
-
-				-- json
-				require("null-ls").builtins.formatting.fixjson,
-
-				-- lua
-				require("null-ls").builtins.formatting.stylua,
-
-				-- php
-				require("null-ls").builtins.formatting.phpcbf,
-
-				-- ruby
-				require("null-ls").builtins.diagnostics.rubocop.with({
-					prefer_local = "bin",
-				}),
-
-				require("null-ls").builtins.formatting.rubocop.with({
-					prefer_local = "bin",
-				}),
-
-				-- rust
-				require("null-ls").builtins.formatting.rustfmt,
-
-				-- spellcheck
-				require("null-ls").builtins.diagnostics.codespell,
-				-- require("null-ls").builtins.formatting.codespell,
-
-				-- python
-				require("null-ls").builtins.formatting.black,
-			},
-			on_attach = on_attach,
-			capabilities = capabilities,
+		require("mason-tool-installer").setup({
+			ensure_installed = Linters,
+		})
+		require("mason-tool-installer").setup({
+			ensure_installed = Formatters,
 		})
 	end,
 }

@@ -1,4 +1,6 @@
 local module = {
+	"linting",
+	"formatting",
 	"lsp",
 	"cmp",
 	"cool",

@@ -1,19 +1,19 @@
 FormattersByFiletype = {
-  javascript = { "prettier" },
-  typescript = { "prettier" },
-  javascriptreact = { "prettier" },
-  typescriptreact = { "prettier" },
-  svelte = { "prettier" },
-  css = { "prettier" },
-  html = { "prettier" },
-  json = { "prettier" },
-  yaml = { "prettier" },
-  markdown = { "prettier" },
-  graphql = { "prettier" },
-  lua = { "stylua" },
-  python = { "isort", "black" },
-  php = { "phpcbf" },
-  ruby = { "rubocop" },
+	javascript = { "eslint_d" },
+	typescript = { "eslint_d" },
+	javascriptreact = { "eslint_d" },
+	typescriptreact = { "eslint_d" },
+	svelte = { "eslint_d" },
+	css = { "prettier" },
+	html = { "prettier" },
+	json = { "prettier" },
+	yaml = { "prettier" },
+	markdown = { "prettier" },
+	graphql = { "prettier" },
+	lua = { "stylua" },
+	python = { "isort", "black" },
+	php = { "phpcbf" },
+	ruby = { "rubocop" },
 }
 
 Formatters = {}
@@ -22,7 +22,6 @@ for _, v in pairs(FormattersByFiletype) do
 		table.insert(Formatters, v)
 	end
 end
-
 
 local module = {
 	"stevearc/conform.nvim",

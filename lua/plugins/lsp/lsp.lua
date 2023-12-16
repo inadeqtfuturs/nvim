@@ -57,6 +57,7 @@ local module = {
 					},
 				},
 			},
+			pyright = {},
 			theme_check = {
 				root_dir = function()
 					return vim.loop.cwd()
@@ -150,6 +151,9 @@ local module = {
 				-- spellcheck
 				require("null-ls").builtins.diagnostics.codespell,
 				-- require("null-ls").builtins.formatting.codespell,
+
+				-- python
+				require("null-ls").builtins.formatting.black,
 			},
 			on_attach = on_attach,
 			capabilities = capabilities,

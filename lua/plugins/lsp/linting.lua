@@ -10,8 +10,9 @@ LintersByFiletype = {
 
 Linters = {}
 for _, v in pairs(LintersByFiletype) do
-	if not Linters[v] then
-		table.insert(Linters, v)
+	local linter = v[1]
+	if not Linters[linter] then
+		Linters[linter] = linter
 	end
 end
 
@@ -22,7 +23,6 @@ local module = {
 		"BufNewFile",
 	},
 	config = function()
-		-- diagnostics
 		local lint = require("lint")
 
 		lint.linters_by_ft = LintersByFiletype

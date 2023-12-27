@@ -11,15 +11,16 @@ FormattersByFiletype = {
 	markdown = { "prettier" },
 	graphql = { "prettier" },
 	lua = { "stylua" },
-	python = { "isort", "black" },
+	python = { "black" },
 	php = { "phpcbf" },
 	ruby = { "rubocop" },
 }
 
 Formatters = {}
 for _, v in pairs(FormattersByFiletype) do
-	if not Formatters[v] then
-		table.insert(Formatters, v)
+	local formatter = v[1]
+	if not Formatters[formatter] then
+		Formatters[formatter] = formatter
 	end
 end
 

@@ -10,9 +10,12 @@ module = {
 				-- for TypeScript v4.9+
 				"@styled/typescript-styled-plugin",
 			},
-			on_attach = function(client)
+			on_attach = function(client, bufnr)
 				client.server_capabilities.documentFormattingProvider = false
 				client.server_capabilities.documentRangeFormattingProvider = false
+				require("plugins.lsp.keymaps").setup(bufnr)
+				require("plugins.lsp.highlighter").setup()
+				require("plugins.lsp.handlers").setup(client)
 			end,
 			handlers = {
 				["textDocument/publishDiagnostics"] = api.filter_diagnostics({ 80001 }),

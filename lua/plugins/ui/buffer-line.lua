@@ -3,7 +3,18 @@ local module = {
 	dependencies = { { "nvim-tree/nvim-web-devicons" }, { "moll/vim-bbye" } },
 	commit = "688cdc30643f67db2d619bd4d8e0519f36f1c464",
 	config = function()
-		require("bufferline").setup({})
+		require("bufferline").setup({
+			options = {
+				offsets = {
+					{
+						filetype = "NvimTree",
+						text = "file explorer",
+						highlight = "Directory",
+						separator = true, -- use a "true" to enable the default, or set your own character
+					},
+				},
+			},
+		})
 		local map = vim.api.nvim_set_keymap
 		local opts = { noremap = true, silent = true }
 

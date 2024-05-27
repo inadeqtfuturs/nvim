@@ -8,6 +8,7 @@ function module.setup(client)
 			border = "rounded",
 		},
 		diagnostic = {
+			underline = true,
 			virtual_text = false,
 			float = {
 				focusable = true,

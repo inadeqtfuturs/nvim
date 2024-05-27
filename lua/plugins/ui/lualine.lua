@@ -1,3 +1,10 @@
+local project_root = {
+	function()
+		return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+	end,
+	separator = "",
+}
+
 local module = {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { { "nvim-tree/nvim-web-devicons", opt = true } },
@@ -7,12 +14,13 @@ local module = {
 			options = {
 				theme = "onenord",
 				globalstatus = true,
-				section_separators = { left = "", right = "" },
-				component_separators = { left = "|", right = "|" },
+				component_separators = "",
+				section_separators = "",
 				disabled_filetypes = { "dashboard", "NvimTree", "neo-tree", "packer" },
 			},
 			sections = {
 				lualine_b = {
+					project_root,
 					{
 						"branch",
 						icon = nil,

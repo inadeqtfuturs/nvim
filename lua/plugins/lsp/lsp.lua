@@ -63,19 +63,6 @@ local module = {
 					return vim.loop.cwd()
 				end,
 			},
-			--[[ tsserver = { ]]
-			--[[ 	init_options = { ]]
-			--[[ 		plugins = { ]]
-			--[[ 			{ ]]
-			--[[ 				name = "typescript-styled-plugin", ]]
-			--[[ 				location = os.getenv("HOME") .. "/.nvm/versions/node/v17.6.0/lib", ]]
-			--[[ 			}, ]]
-			--[[ 		}, ]]
-			--[[ 		preferences = { ]]
-			--[[ 			disableSuggestions = true, ]]
-			--[[ 		}, ]]
-			--[[ 	}, ]]
-			--[[ }, ]]
 			yamlls = {
 				settings = {
 					yaml = {

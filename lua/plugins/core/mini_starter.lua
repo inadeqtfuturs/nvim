@@ -31,8 +31,8 @@ local module = {
 					end
 
 					local items = {}
-					for _, f in ipairs(vim.list_slice(files, 1, 5)) do
-						local name = vim.fn.fnamemodify(f, ":t")
+					for _, f in ipairs(vim.list_slice(files, 1, 10)) do
+						local name = vim.fn.fnamemodify(f, ":p:h:t") .. "/" .. vim.fn.fnamemodify(f, ":t")
 						table.insert(items, { action = "edit " .. f, name = name, section = section })
 					end
 

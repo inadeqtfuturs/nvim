@@ -1,5 +1,7 @@
 local module = {
-	"dashboard",
+	"mini_starter",
+	--[[ "dashboard", ]]
+	--[[ "alpha_dashboard", ]]
 	"which_key",
 }
 

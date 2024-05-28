@@ -26,18 +26,6 @@ local module = {
 			jsonls = {},
 			graphql = {},
 			marksman = {},
-			rust_analyzer = {
-				settings = {
-					["rust-analyzer"] = {
-						cargo = { allFeatures = true },
-						checkOnSave = {
-							command = "clippy",
-							extraArgs = { "--no-deps" },
-						},
-					},
-				},
-			},
-			solargraph = {},
 			stylelint_lsp = {
 				settings = {
 					stylelintplus = {
@@ -56,12 +44,6 @@ local module = {
 						},
 					},
 				},
-			},
-			pyright = {},
-			theme_check = {
-				root_dir = function()
-					return vim.loop.cwd()
-				end,
 			},
 			yamlls = {
 				settings = {
@@ -101,13 +83,54 @@ local module = {
 		require("mason").setup()
 		require("plugins.lsp.installer").setup(servers, opts)
 
+		local eslint_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", "eslint.config.js", "eslint.config.cjs" }
+		local xo_config = { ".xo-config" }
+
 		-- null-ls
 		require("null-ls").setup({
 			sources = {
 				-- js
-				require("null-ls").builtins.diagnostics.eslint_d,
-				require("null-ls").builtins.formatting.eslint_d,
-				require("null-ls").builtins.code_actions.eslint_d,
+				require("null-ls").builtins.diagnostics.eslint_d.with({
+					timeout = 10000,
+					condition = function(utils)
+						return utils.root_has_file(eslint_files)
+					end,
+					--[[ prefer_local = "node_modules/.bin", ]]
+				}),
+				require("null-ls").builtins.formatting.eslint_d.with({
+					timeout = 20000,
+					condition = function(utils)
+						return utils.root_has_file(eslint_files)
+					end,
+					--[[ prefer_local = "node_modules/.bin", ]]
+				}),
+				require("null-ls").builtins.code_actions.eslint_d.with({
+					timeout = 10000,
+					condition = function(utils)
+						return utils.root_has_file(eslint_files)
+					end,
+					--[[ prefer_local = "node_modules/.bin", ]]
+				}),
+
+				-- xo
+				require("null-ls").builtins.diagnostics.xo.with({
+					prefer_local = "node_modules/.bin",
+					timeout = 10000,
+					condition = function(utils)
+						local xo = utils.root_has_file(xo_config)
+						local es = utils.root_has_file(eslint_files)
+						return xo and not es
+					end,
+				}),
+				require("null-ls").builtins.code_actions.xo.with({
+					prefer_local = "node_modules/.bin",
+					timeout = 10000,
+					condition = function(utils)
+						local xo = utils.root_has_file(xo_config)
+						local es = utils.root_has_file(eslint_files)
+						return xo and not es
+					end,
+				}),
 
 				-- liquid
 				require("null-ls").builtins.formatting.prettier.with({
@@ -136,7 +159,7 @@ local module = {
 				require("null-ls").builtins.formatting.rustfmt,
 
 				-- spellcheck
-				require("null-ls").builtins.diagnostics.codespell,
+				--[[ require("null-ls").builtins.diagnostics.codespell, ]]
 				-- require("null-ls").builtins.formatting.codespell,
 
 				-- python

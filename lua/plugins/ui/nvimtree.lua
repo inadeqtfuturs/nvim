@@ -1,3 +1,7 @@
+local root_cwd = function(path)
+	return vim.fn.fnamemodify(path, ":t")
+end
+
 local module = {
 	"kyazdani42/nvim-tree.lua",
 	commit = "8b8d457",
@@ -15,6 +19,9 @@ local module = {
 			},
 			git = {
 				ignore = false,
+			},
+			renderer = {
+				root_folder_label = root_cwd,
 			},
 		})
 

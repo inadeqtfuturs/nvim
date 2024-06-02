@@ -3,7 +3,13 @@ local module = {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		require("onenord").setup()
+		local colors = require("onenord.colors").load()
+		require("onenord").setup({
+			custom_highlights = {
+				["MiniStarterHeader"] = { fg = colors.dark_blue },
+				["MiniStarterSection"] = { fg = colors.blue },
+			},
+		})
 	end,
 }
 

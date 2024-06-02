@@ -26,18 +26,6 @@ local module = {
 			jsonls = {},
 			graphql = {},
 			marksman = {},
-			rust_analyzer = {
-				settings = {
-					["rust-analyzer"] = {
-						cargo = { allFeatures = true },
-						checkOnSave = {
-							command = "clippy",
-							extraArgs = { "--no-deps" },
-						},
-					},
-				},
-			},
-			solargraph = {},
 			stylelint_lsp = {
 				settings = {
 					stylelintplus = {
@@ -56,12 +44,6 @@ local module = {
 						},
 					},
 				},
-			},
-			pyright = {},
-			theme_check = {
-				root_dir = function()
-					return vim.loop.cwd()
-				end,
 			},
 			yamlls = {
 				settings = {
@@ -105,9 +87,15 @@ local module = {
 		require("null-ls").setup({
 			sources = {
 				-- js
-				require("null-ls").builtins.diagnostics.eslint_d,
-				require("null-ls").builtins.formatting.eslint_d,
-				require("null-ls").builtins.code_actions.eslint_d,
+				require("null-ls").builtins.diagnostics.eslint_d.with({
+					timeout = 10000,
+				}),
+				require("null-ls").builtins.formatting.eslint_d.with({
+					timeout = 20000,
+				}),
+				require("null-ls").builtins.code_actions.eslint_d.with({
+					timeout = 10000,
+				}),
 
 				-- liquid
 				require("null-ls").builtins.formatting.prettier.with({
@@ -136,7 +124,7 @@ local module = {
 				require("null-ls").builtins.formatting.rustfmt,
 
 				-- spellcheck
-				require("null-ls").builtins.diagnostics.codespell,
+				--[[ require("null-ls").builtins.diagnostics.codespell, ]]
 				-- require("null-ls").builtins.formatting.codespell,
 
 				-- python

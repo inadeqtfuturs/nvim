@@ -45,7 +45,7 @@ function module.setup(client)
 		vim.cmd([[
        augroup Format
          au! * <buffer>
-         au BufWritePre <buffer> lua vim.lsp.buf.format()
+         au BufWritePre <buffer> lua vim.lsp.buf.format({ timeout = 2000 })
        augroup END
      ]])
 	end

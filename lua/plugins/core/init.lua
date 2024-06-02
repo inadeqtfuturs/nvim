@@ -1,5 +1,5 @@
 local module = {
-	"dashboard",
+	"mini_starter",
 	"which_key",
 }
 

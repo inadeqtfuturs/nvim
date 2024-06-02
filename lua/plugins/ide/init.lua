@@ -4,8 +4,9 @@ return {
 	"comments",
 	"indent_blankline",
 	"lightspeed",
+	"neo_git",
 	"noice",
-	"session",
+	--[[ "session", ]]
 	"surround",
 	"telescope",
 	"todo",
